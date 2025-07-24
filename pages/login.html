@@ -9,6 +9,332 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Sign in</title>
+    <style>
+      /* Mobile-first responsive design */
+      @media (max-width: 768px) {
+        /* Header optimization */
+        header.bg-```math \#07B7FF47``` {
+          background-color: #07b7ff47 !important;
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          z-index: 100 !important;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        nav.container {
+          padding: 1rem !important;
+          justify-content: center !important;
+        }
+
+        /* Logo centering */
+        .font-bold.text-3xl.pl-28 {
+          padding-left: 0 !important;
+          margin-right: 0 !important;
+          font-size: clamp(1.5rem, 5vw, 2rem) !important;
+          text-align: center !important;
+        }
+
+        /* Main container - full viewport */
+        .min-h-screen {
+          min-height: 100vh !important;
+          background-size: cover !important;
+          background-position: center !important;
+          background-attachment: fixed !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          padding: 5rem 1rem 2rem !important;
+        }
+
+        /* Login card - responsive positioning */
+        .absolute.left-```math 135px```.top-```math 113px``` {
+          position: relative !important;
+          left: auto !important;
+          top: auto !important;
+          width: 100% !important;
+          max-width: 400px !important;
+          height: auto !important;
+          margin: 0 auto !important;
+          padding: 2rem 1.5rem !important;
+          border-radius: 20px !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        /* Top text - better spacing */
+        .w-full.text-center.mb-2 {
+          font-size: 0.875rem !important;
+          margin-bottom: 1rem !important;
+        }
+
+        /* Welcome text - fluid typography */
+        .text-2xl.font-normal.mt-4.mb-4 {
+          font-size: clamp(1.25rem, 4vw, 1.75rem) !important;
+          margin-top: 1rem !important;
+          margin-bottom: 1.5rem !important;
+          font-weight: 600 !important;
+        }
+
+        /* SVG icon - responsive sizing */
+        svg.w-14.h-14 {
+          width: 60px !important;
+          height: 60px !important;
+          margin-bottom: 2rem !important;
+        }
+
+        /* Form optimization */
+        form.w-full {
+          gap: 1.25rem !important;
+        }
+
+        /* Input fields - enhanced UX */
+        input[type="email"],
+        input[type="password"] {
+          padding: 0.75rem 0 !important;
+          font-size: 16px !important; /* Prevents iOS zoom */
+          border-bottom-width: 2px !important;
+          transition: all 0.3s ease !important;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+          border-bottom-color: #07b7ff !important;
+        }
+
+        /* Remember me section - mobile layout */
+        .flex.items-center.justify-between.mt-2 {
+          flex-direction: column !important;
+          gap: 1rem !important;
+          margin-top: 1.5rem !important;
+        }
+
+        /* Remember me checkbox */
+        label.flex.items-center.text-xs {
+          font-size: 0.875rem !important;
+          order: 2 !important;
+        }
+
+        /* Login button - full width mobile */
+        button[type="submit"] {
+          width: 100% !important;
+          max-width: none !important;
+          margin: 0 !important;
+          padding: 0.875rem !important;
+          font-size: 1rem !important;
+          font-weight: 600 !important;
+          background-color: #07b7ff !important;
+          color: white !important;
+          order: 1 !important;
+          transition: all 0.3s ease !important;
+          -webkit-tap-highlight-color: transparent !important;
+        }
+
+        button[type="submit"]:active {
+          transform: scale(0.98) !important;
+        }
+
+        /* Forgot password link */
+        a.text-xs.mar {
+          font-size: 0.875rem !important;
+          margin-top: 0.5rem !important;
+          display: block !important;
+          text-align: center !important;
+          padding: 0.5rem !important;
+        }
+
+        /* Footer - mobile positioning */
+        .absolute.left-```math 156px```.bottom-4 {
+          position: fixed !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          text-align: center !important;
+          padding: 1rem !important;
+          background-color: rgba(0, 0, 0, 0.5) !important;
+          font-size: 0.75rem !important;
+        }
+      }
+
+      /* Small phones */
+      @media (max-width: 480px) {
+        /* Compact card padding */
+        .absolute.left-```math 135px```.top-```math 113px``` {
+          padding: 1.5rem 1rem !important;
+          margin: 0 0.5rem !important;
+        }
+
+        /* Smaller logo */
+        .font-bold.text-3xl.pl-28 {
+          font-size: 1.25rem !important;
+        }
+
+        /* Smaller welcome text */
+        .text-2xl.font-normal.mt-4.mb-4 {
+          font-size: 1.125rem !important;
+        }
+
+        /* Smaller icon */
+        svg.w-14.h-14 {
+          width: 48px !important;
+          height: 48px !important;
+        }
+
+        /* Compact button */
+        button[type="submit"] {
+          padding: 0.75rem !important;
+          font-size: 0.875rem !important;
+        }
+      }
+
+      /* Landscape orientation */
+      @media (max-width: 768px) and (orientation: landscape) {
+        /* Adjust main container */
+        .min-h-screen {
+          padding: 4rem 1rem 2rem !important;
+        }
+
+        /* Compact card for landscape */
+        .absolute.left-```math 135px```.top-```math 113px``` {
+          padding: 1.5rem !important;
+          max-width: 450px !important;
+        }
+
+        /* Horizontal form layout */
+        .flex.items-center.justify-between.mt-2 {
+          flex-direction: row !important;
+        }
+
+        button[type="submit"] {
+          width: auto !important;
+          min-width: 120px !important;
+          order: 0 !important;
+        }
+
+        label.flex.items-center.text-xs {
+          order: 0 !important;
+        }
+      }
+
+      /* Tablets */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        /* Center the login card */
+        .min-h-screen {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .absolute.left-```math 135px```.top-```math 113px``` {
+          position: relative !important;
+          left: auto !important;
+          top: auto !important;
+          margin: 0 auto !important;
+        }
+
+        /* Adjust logo */
+        .font-bold.text-3xl.pl-28 {
+          padding-left: 2rem !important;
+        }
+
+        /* Footer centering */
+        .absolute.left-```math 156px```.bottom-4 {
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+          width: auto !important;
+        }
+      }
+
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        input[type="email"],
+        input[type="password"] {
+          border-bottom-width: 3px !important;
+        }
+
+        button[type="submit"] {
+          border: 2px solid currentColor !important;
+        }
+      }
+
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) and (max-width: 768px) {
+        .absolute.left-```math 135px```.top-```math 113px``` {
+          background-color: rgba(255, 255, 255, 0.95) !important;
+        }
+      }
+
+      /* Animation enhancements */
+      @media (max-width: 768px) {
+        /* Smooth entrance animation */
+        .absolute.left-```math 135px```.top-```math 113px``` {
+          animation: slideUp 0.4s ease-out !important;
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Input focus animations */
+        input[type="email"],
+        input[type="password"] {
+          position: relative !important;
+        }
+
+        input[type="email"]::after,
+        input[type="password"]::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: #07b7ff;
+          transition: width 0.3s ease;
+        }
+
+        input[type="email"]:focus::after,
+        input[type="password"]:focus::after {
+          width: 100%;
+        }
+      }
+
+      /* Performance optimizations */
+      @media (max-width: 768px) {
+        * {
+          -webkit-font-smoothing: antialiased !important;
+          -moz-osx-font-smoothing: grayscale !important;
+        }
+
+        .min-h-screen {
+          will-change: scroll-position !important;
+        }
+      }
+
+      /* Accessibility improvements */
+      @media (max-width: 768px) {
+        /* Larger touch targets */
+        a,
+        button,
+        input[type="checkbox"] {
+          min-height: 44px !important;
+          min-width: 44px !important;
+        }
+
+        /* Better focus indicators */
+        *:focus {
+          outline: 2px solid #07b7ff !important;
+          outline-offset: 2px !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="bg-[#07B7FF47]">
