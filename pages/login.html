@@ -9,74 +9,203 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              "fade-in": "fadeIn 0.6s ease-out",
+              "slide-up": "slideUp 0.5s ease-out",
+              "bounce-in": "bounceIn 0.8s ease-out",
+              float: "float 3s ease-in-out infinite",
+              glow: "glow 2s ease-in-out infinite alternate",
+              "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              wiggle: "wiggle 1s ease-in-out infinite",
+              shake: "shake 0.5s ease-in-out",
+              "spin-slow": "spin 3s linear infinite",
+              "gradient-x": "gradient-x 15s ease infinite",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              slideUp: {
+                "0%": { opacity: "0", transform: "translateY(30px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              bounceIn: {
+                "0%": { opacity: "0", transform: "scale(0.3)" },
+                "50%": { opacity: "1", transform: "scale(1.05)" },
+                "70%": { transform: "scale(0.9)" },
+                "100%": { opacity: "1", transform: "scale(1)" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              glow: {
+                "0%": { boxShadow: "0 0 20px rgba(7, 183, 255, 0.3)" },
+                "100%": { boxShadow: "0 0 30px rgba(7, 183, 255, 0.6)" },
+              },
+              wiggle: {
+                "0%, 100%": { transform: "rotate(-3deg)" },
+                "50%": { transform: "rotate(3deg)" },
+              },
+              shake: {
+                "0%, 100%": { transform: "translateX(0)" },
+                "10%, 30%, 50%, 70%, 90%": { transform: "translateX(-10px)" },
+                "20%, 40%, 60%, 80%": { transform: "translateX(10px)" },
+              },
+              "gradient-x": {
+                "0%, 100%": {
+                  "background-size": "200% 200%",
+                  "background-position": "left center",
+                },
+                "50%": {
+                  "background-size": "200% 200%",
+                  "background-position": "right center",
+                },
+              },
+            },
+          },
+        },
+      };
+    </script>
     <title>Sign in</title>
+    <style>
+      .stagger-animation > * {
+        animation-delay: calc(var(--stagger-delay, 0) * 0.1s);
+      }
+
+      .input-focus:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(7, 183, 255, 0.2);
+      }
+
+      .hover-lift:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+    </style>
+
   </head>
   <body>
-    <header class="bg-[#07B7FF47]">
-      <nav class="container flex justify-start items-start p-4 bg-[#07B7FF47]">
-        <div class="font-bold text-3xl pl-28 mr-8 mb-1">Easymail</div>
+    <body class="font-['Inter'] bg-[[#07B7FF47]]min-h-screen animate-gradient-x">
+    <header class="bg-[#07B7FF47] animate-fade-in shadow-lg">
+      <nav class="container flex justify-start items-start p-3 sm:p-4 lg:px-8">
+        <div
+          class="font-bold text-xl sm:text-2xl md:text-3xl pl-2 sm:pl-4 md:pl-28 mr-4 sm:mr-8 mb-1 animate-slide-up text-white hover:animate-wiggle cursor-pointer transition-all duration-300 hover:scale-110"
+        >
+          Easymail
+        </div>
       </nav>
     </header>
-    <div
-      class="min-h-screen bg-[url(/images/AlphaTradeZone.png)] bg-no-repeat container"
+<div
+      class="min-h-screen bg-[url(/images/AlphaTradeZone.png)] bg-no-repeat bg-cover bg-center container mx-auto px-2 sm:px-4 md:px-0 relative"
     >
       <div
-        class="absolute left-[135px] top-[113px] w-[475px] h-[554px] bg-white rounded-[10px] shadow-lg flex flex-col items-center px-8 py-6"
+        class="flex items-center justify-center min-h-[calc(100vh-80px)] py-4 sm:py-8"
       >
-        <!-- Top text -->
-        <div class="w-full text-center mb-2">
-          <span class="font-semibold">Don’t have an account?</span>
-          <a
-            href="/pages/Signup.html"
-            class="text-[#07B7FF47] font-semibold ml-1 hover:text-blue-600"
-            >Sign up</a
-          >
-        </div>
-        <!-- Welcome back -->
-        <div class="text-2xl font-normal mt-4 mb-4">Welcome back</div>
-        <!-- SVG Icon -->
-        <svg
-          class="w-14 h-14 bg-gray-200 rounded-full mx-auto mb-6"
-          viewBox="0 0 60 60"
+        <div
+          class="w-full max-w-xs sm:max-w-md mx-2 sm:mx-4 md:mx-0 md:absolute md:left-[135px] md:top-[113px] md:w-[475px] md:h-[554px] bg-white/95 backdrop-blur-sm rounded-xl md:rounded-[20px] shadow-xl md:shadow-2xl flex flex-col items-center px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-6 animate-bounce-in hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 border border-white/20"
         >
-          <circle cx="30" cy="20" r="10" fill="#444" />
-          <rect x="15" y="35" width="30" height="15" rx="8" fill="#444" />
-        </svg>
-        <!-- Form -->
-        <form class="w-full flex flex-col gap-4">
-          <input
-            type="email"
-            placeholder="Your email"
-            class="border-b border-gray-300 focus:outline-none py-2"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            class="border-b border-gray-300 focus:outline-none py-2"
-          />
-          <div class="flex items-center justify-between mt-2">
-            <label class="flex items-center text-xs">
-              <input type="checkbox" class="mr-2" />
-              Remember me
-            </label>
-
-            <button
-              type="submit"
-              class="bg-[#07B7FF47] hover:text-blue-600 text-white rounded-3xl py-2 mt-2 w-32 mx-auto mr-0"
-            >
-              Log in
-            </button>
-          </div>
-          <a
-            href="#"
-            class="text-xs mar text-[#07B7FF47] hover:text-blue-600 text-right"
-            >forgot password?</a
+          <!-- Top text -->
+          <div
+            class="w-full text-center mb-3 sm:mb-4 md:mb-2 animate-fade-in stagger-animation"
+            style="--stagger-delay: 1"
           >
-        </form>
+            <span
+              class="font-semibold text-xs sm:text-sm md:text-base text-gray-700"
+              >Don't have an account?</span
+            >
+            <a
+              href="/pages/Signup.html"
+              class="text-[#07B7FF47] font-semibold ml-1 hover:text-blue-600 transition-all duration-300 hover:underline transform hover:scale-110 inline-block hover:animate-pulse-slow"
+              >Sign up</a
+            >
+          </div>
+
+          <!-- Welcome back -->
+          <div
+            class="text-lg sm:text-xl md:text-2xl font-normal mt-1 sm:mt-2 md:mt-4 mb-3 sm:mb-4 md:mb-4 text-gray-800 animate-fade-in stagger-animation hover:text-blue-700 transition-colors duration-300"
+            style="--stagger-delay: 2"
+          >
+            Welcome back
+          </div>
+
+          <!-- SVG Icon -->
+          <div
+            class="animate-float hover:animate-spin-slow mb-4 sm:mb-6 stagger-animation cursor-pointer"
+            style="--stagger-delay: 3"
+          >
+            <svg
+              class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto p-2 sm:p-3 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-110 animate-glow"
+              viewBox="0 0 60 60"
+            >
+              <circle cx="30" cy="20" r="10" fill="white" />
+              <rect x="15" y="35" width="30" height="15" rx="8" fill="white" />
+            </svg>
+          </div>
+
+          <!-- Form -->
+          <form
+            class="w-full flex flex-col gap-3 sm:gap-4 md:gap-6 animate-fade-in stagger-animation"
+            style="--stagger-delay: 4"
+          >
+            <div class="relative">
+              <input
+                type="email"
+                placeholder="Your email"
+                class="w-full border-0 border-b-2 border-gray-300 focus:border-[#07B7FF47] focus:outline-none py-2 sm:py-3 md:py-2 bg-transparent transition-all duration-300 input-focus text-xs sm:text-sm md:text-base placeholder-gray-500 hover:border-gray-400"
+                required
+              />
+            </div>
+            <div class="relative">
+              <input
+                type="password"
+                placeholder="Password"
+                class="w-full border-0 border-b-2 border-gray-300 focus:border-[#07B7FF47] focus:outline-none py-2 sm:py-3 md:py-2 bg-transparent transition-all duration-300 input-focus text-xs sm:text-sm md:text-base placeholder-gray-500 hover:border-gray-400"
+                required
+              />
+            </div>
+
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mt-3 sm:mt-4 md:mt-2"
+            >
+              <label
+                class="flex items-center text-xs md:text-sm text-gray-600 cursor-pointer hover:text-gray-800 transition-all duration-300 hover:scale-105"
+              >
+                <input
+                  type="checkbox"
+                  class="mr-2 w-3 h-3 sm:w-4 sm:h-4 text-[#07B7FF47] focus:ring-[#07B7FF47] border-gray-300 rounded transition-all duration-300 hover:scale-110"
+                />
+                Remember me
+              </label>
+
+              <button
+                type="submit"
+                class="bg-gradient-to-r from-[#07B7FF47] via-blue-500 to-blue-600 hover:from-blue-600 hover:via-blue-500 hover:to-[#07B7FF47] text-white rounded-full py-2 sm:py-2.5 md:py-2 px-4 sm:px-6 md:px-8 w-full sm:w-auto transition-all duration-500 transform hover:scale-110 hover:shadow-2xl font-semibold text-xs sm:text-sm md:text-base hover:animate-pulse-slow active:scale-95"
+              >
+                Log in
+              </button>
+            </div>
+
+            <a
+              href="#"
+              class="text-xs md:text-sm text-[#07B7FF47] hover:text-blue-600 text-center sm:text-right transition-all duration-300 hover:underline transform hover:scale-110 inline-block mt-1 sm:mt-2 hover:animate-wiggle"
+              >Forgot password?</a
+            >
+          </form>
+        </div>
       </div>
+
       <!-- Footer -->
-      <div class="absolute left-[156px] bottom-4 text-xs text-white opacity-80">
-        copyright 2022 Easymail. All rights reserved
+      <div
+        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 md:left-[156px] md:transform-none text-xs text-white opacity-80 animate-fade-in bg-black bg-opacity-30 px-3 py-1 rounded-full md:bg-transparent md:px-0 md:py-0"
+        style="animation-delay: 1s"
+      >
+        © 2024 Easymail. All rights reserved
       </div>
     </div>
   </body>
